@@ -4,14 +4,20 @@ Update this file after every meaningful implementation change.
 
 ## Current Phase
 
-- Complete: feature 01 design system.
+- Complete: feature 02 editor shell.
 
 ## Current Goal
 
-- Feature 01 is implemented and verified.
+- Feature 02 is implemented and verified.
 
 ## Completed
 
+- Added the reusable editor navbar with fixed height, three sections, and state-aware PanelLeftOpen / PanelLeftClose toggle icons.
+- Added the controlled project sidebar with a sliding overlay, Projects header, close button, shadcn tabs, empty states, and full-width New Project button.
+- Connected the editor shell to the home route with shared sidebar state and a full-size canvas.
+- Documented the existing token-based dialog composition for titles, descriptions, and footer actions without instantiating dialogs.
+- Verified feature 02 with lint, production build including TypeScript, and browser interaction checks for both tabs and both close controls.
+- Browser measurements confirmed identical canvas bounds before and after opening the sidebar; closed sidebar content is inert.
 - Configured shadcn/ui with the Radix Nova preset, Tailwind v4, CSS variables, and Lucide icons.
 - Installed Button, Card, Dialog, Input, Tabs, Textarea, and ScrollArea using the shadcn CLI.
 - Installed lucide-react and generated lib/utils.ts with the reusable cn() helper.
@@ -37,12 +43,17 @@ Update this file after every meaningful implementation change.
 
 ## Architecture Decisions
 
+- EditorShell owns sidebar state; ProjectSidebar overlays the canvas rather than participating in its layout.
+- New Project accepts an optional callback and is disabled until project creation behavior is supplied by a later feature.
+- Reuse the existing Dialog primitives and semantic theme tokens; feature 02 introduces no actual dialogs.
 - Keep generated components/ui files unchanged; customize the theme centrally in globals.css.
 - The initial globals.css contained only a Tailwind import, so use shadcn neutral dark defaults.
 - Use the CLI-generated cn package re-export to share its class merging behavior with the generated components.
 
 ## Session Notes
 
-- Specification: context/feature-specs/01-design-system.md.
+- Specifications: context/feature-specs/01-design-system.md and context/feature-specs/02-editor.md.
+- Feature 02 production browser verification used localhost port 3102 because port 3000 was already occupied.
+- Use npm.cmd in PowerShell because the local execution policy blocks npm.ps1.
 - Production build passed with network access for the existing Geist Google Fonts imports.
 

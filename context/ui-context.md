@@ -40,3 +40,15 @@ Installed primitives: Button, Card, Dialog, Input, Tabs, Textarea, ScrollArea.
 ## Icons
 
 Lucide React, configured as the shadcn icon library.
+
+## Editor Shell
+
+`components/editor/editor-shell.tsx` owns sidebar visibility and composes the reusable navbar, overlay sidebar, and canvas. The navbar is 3.5rem tall with left, center, and right sections. Center and right sections are empty until later features.
+
+The sidebar is positioned absolutely above the canvas and slides from the left without changing canvas dimensions. Closed content is inert and hidden from assistive technology. Reduced motion disables the transition. Both project tabs contain placeholders. The full-width New Project action accepts an optional callback and remains disabled until a later feature supplies project creation behavior.
+
+## Dialog Pattern
+
+Compose the existing primitives from `components/ui/dialog.tsx`: `Dialog` and `DialogTrigger`, then `DialogContent` containing `DialogHeader` with `DialogTitle` and `DialogDescription`, followed by content and `DialogFooter` for action buttons. Always provide a meaningful title and description.
+
+Keep the existing token-based styling: `bg-popover`, `text-popover-foreground`, `text-muted-foreground`, theme borders, and `bg-muted/50` for the footer. Use the existing Button variants for footer actions. No feature dialogs are instantiated in feature 02.
