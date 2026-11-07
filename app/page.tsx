@@ -1,5 +1,22 @@
-import { EditorShell } from "@/components/editor/editor-shell";
+"use client";
+
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { useAuth } from "@clerk/nextjs";
 
 export default function Home() {
-  return <EditorShell />;
+  const { isLoaded, userId } = useAuth();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (isLoaded) {
+      if (userId) {
+        router.replace("/editor");
+      } else {
+        router.replace("/sign-in");
+      }
+    }
+  }, [isLoaded, userId, router]);
+
+  return null;
 }

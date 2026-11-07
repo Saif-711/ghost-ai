@@ -4,11 +4,11 @@ Update this file after every meaningful implementation change.
 
 ## Current Phase
 
-- Complete: feature 02 editor shell.
+- Complete: feature 03 authentication.
 
 ## Current Goal
 
-- Feature 02 is implemented and verified.
+- Feature 03 is implemented and verified.
 
 ## Completed
 
@@ -28,6 +28,16 @@ Update this file after every meaningful implementation change.
 - Verified generated components/ui files remain unchanged after installation.
 - npm run lint passed.
 - npm run build passed, including TypeScript and static page generation.
+- Added ClerkProvider with the Clerk dark theme and app CSS variable overrides.
+- Added responsive sign-in and sign-up pages with minimal two-panel desktop layouts.
+- Added root redirect behavior and moved the protected editor shell to `/editor`.
+- Added root-level `proxy.ts` protecting all routes except the configured auth routes.
+- Added Clerk UserButton to the editor navbar for profile settings and logout.
+- Installed `@clerk/ui` for Clerk's dark theme.
+- Verified feature 03 with lint and a production build including TypeScript, route generation, and Clerk partial prerendering.
+- Refined the auth pages to match the supplied reference with an explicit 50/50 desktop split and compact dark visual treatment.
+- Increased contrast between the auth information panel and form panel using the existing card/background theme tokens.
+- Explicitly applied Geist Sans and Geist Mono to Clerk auth UI to match the documented typography guidelines.
 
 ## In Progress
 
@@ -39,7 +49,7 @@ Update this file after every meaningful implementation change.
 
 ## Open Questions
 
-- None.
+- No local sign-in/sign-up URL variables are currently present; the standard Clerk route defaults `/sign-in` and `/sign-up` are used when those variables are unset.
 
 ## Architecture Decisions
 
@@ -49,10 +59,12 @@ Update this file after every meaningful implementation change.
 - Keep generated components/ui files unchanged; customize the theme centrally in globals.css.
 - The initial globals.css contained only a Tailwind import, so use shadcn neutral dark defaults.
 - Use the CLI-generated cn package re-export to share its class merging behavior with the generated components.
+- Use Clerk's standard `proxy.ts` convention for default route protection; authentication pages remain public via the configured sign-in and sign-up URL variables.
+- Keep Clerk's built-in authentication and user-menu flows intact, customizing only the provider theme variables and surrounding layout.
 
 ## Session Notes
 
-- Specifications: context/feature-specs/01-design-system.md and context/feature-specs/02-editor.md.
+- Specifications: context/feature-specs/01-design-system.md, context/feature-specs/02-editor.md, and context/feature-specs/03-auth.md.
 - Feature 02 production browser verification used localhost port 3102 because port 3000 was already occupied.
 - Use npm.cmd in PowerShell because the local execution policy blocks npm.ps1.
 - Production build passed with network access for the existing Geist Google Fonts imports.
