@@ -20,7 +20,7 @@ export function ProjectSidebar({ isOpen, onClose, onNewProject }: ProjectSidebar
       aria-hidden={!isOpen}
       inert={!isOpen}
       className={cn(
-        "absolute inset-y-0 left-0 z-20 flex w-80 max-w-full flex-col border-r border-sidebar-border bg-sidebar text-sidebar-foreground shadow-xl transition-transform duration-200 ease-out motion-reduce:transition-none",
+        "absolute inset-y-0 left-0 z-20 flex w-80 max-w-full flex-col overflow-y-auto border-r border-sidebar-border bg-sidebar text-sidebar-foreground shadow-xl transition-transform duration-200 ease-out motion-reduce:transition-none",
         isOpen ? "translate-x-0" : "-translate-x-full",
       )}
     >
@@ -30,8 +30,8 @@ export function ProjectSidebar({ isOpen, onClose, onNewProject }: ProjectSidebar
           <X aria-hidden="true" />
         </Button>
       </div>
-      <Tabs defaultValue="my-projects" className="min-h-0 flex-1 px-4">
-        <TabsList className="w-full" aria-label="Project categories">
+      <Tabs defaultValue="my-projects" className="min-h-10 flex-1 px-4">
+        <TabsList className="w-full shrink-0" aria-label="Project categories">
           <TabsTrigger value="my-projects">My Projects</TabsTrigger>
           <TabsTrigger value="shared">Shared</TabsTrigger>
         </TabsList>
