@@ -24,6 +24,7 @@ Use semantic Tailwind classes backed by CSS variables, such as `bg-background`, 
 
 - UI: Geist Sans, mapped from `--font-geist-sans` to `--font-sans`.
 - Code: Geist Mono, mapped from `--font-geist-mono` to `--font-mono`.
+- Clerk auth components inherit Geist Sans for interface text and buttons, and Geist Mono for monospaced text.
 
 ## Border Radius
 
@@ -46,6 +47,10 @@ Lucide React, configured as the shadcn icon library.
 `components/editor/editor-shell.tsx` owns sidebar visibility and composes the reusable navbar, overlay sidebar, and canvas. The navbar is 3.5rem tall with left, center, and right sections. Center and right sections are empty until later features.
 
 The sidebar is positioned absolutely above the canvas and slides from the left without changing canvas dimensions. Closed content is inert and hidden from assistive technology. Reduced motion disables the transition. Both project tabs contain placeholders. The full-width New Project action accepts an optional callback and remains disabled until a later feature supplies project creation behavior.
+
+## Authentication Layout
+
+Sign-in and sign-up use equal-width desktop columns. The left information panel uses the semantic card surface to distinguish it from the near-black form side; mobile layouts show the form only.
 
 ## Dialog Pattern
 

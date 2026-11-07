@@ -1,6 +1,7 @@
 "use client";
 
 import { PanelLeftClose, PanelLeftOpen } from "lucide-react";
+import { UserButton } from "@clerk/nextjs";
 import type { RefObject } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -30,7 +31,9 @@ export function EditorNavbar({ isSidebarOpen, onToggleSidebar, sidebarToggleRef 
         </Button>
       </div>
       <div />
-      <div className="flex items-center justify-end" />
+      <div className="flex items-center justify-end relative z-50">
+        <UserButton />
+      </div>
     </header>
   );
 }
